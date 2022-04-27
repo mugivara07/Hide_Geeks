@@ -15,9 +15,17 @@ void Game::run() {
 
     view.reset(sf::FloatRect(0, 0, 640, 480));
 
-    Player player_1("hero.png", 250, 250, 96.0, 96.0);
+    Player player_1("chel1.png", 250, 250, 96.0, 96.0);
 
     sf::Clock clock;
+    //float dX = 0;
+    //float dY = 0;
+
+    //float dX = pos.x - p.x;//вектор , колинеарный прямой, которая пересекает спрайт и курсор
+    //float dY = pos.y - p.y;//он же, координата y
+    //float rotation = (atan2(dY, dX)) * 180 / 3.14159265;//получаем угол в радианах и переводим его в градусы
+    //std::cout << rotation << "\n";//смотрим на градусы в консольке
+    //p.sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
 
     sf::Image map_image;
     map_image.loadFromFile("map.png");
@@ -30,7 +38,7 @@ void Game::run() {
 
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
-        time = time/350;
+        time = time/500;
 //        sf::Event event;
 //        while (_window.pollEvent(event))
 //        {
