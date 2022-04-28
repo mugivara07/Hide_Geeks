@@ -9,7 +9,7 @@
 //    _key_binding[sf::Keyboard::Space] = FIRE;
 //}
 
-void Player::Update(float time) {
+void Player::Update(float time) { // // Todo(Artem) Implement diagonal movement
     switch (dir) {
         case 0:
             dx = speed;
@@ -30,6 +30,23 @@ void Player::Update(float time) {
     }
     x += dx*time;
     y += dy*time;
+
+    // *********** Temporary map interaction ***********
+
+    if (x > 1241) {
+        x = 1241;
+    }
+    if (x < 39) {
+        x = 39;
+    }
+    if (y > 754) {
+        y = 754;
+    }
+    if (y < 46) {
+        y = 46;
+    }
+
+    // ****************************************************
 
     speed = 0;
     sprite.setPosition(x, y);

@@ -18,7 +18,8 @@ public:
         image.loadFromFile(file);
         texture.loadFromImage(image);
         sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect (w, h, w, h));
+        sprite.setTextureRect(sf::IntRect (1188, 936, w, h));
+        sprite.setOrigin(w/2, h/2);
     }
     void Update(float time);
     float Get_Player_X();

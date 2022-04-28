@@ -5,7 +5,6 @@
 
 int main() {
     try {
-        printf("1\n");
         Game game;
         game.run();
     } catch (std::exception& exeption) {
