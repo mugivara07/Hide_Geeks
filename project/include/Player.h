@@ -5,6 +5,7 @@
 class Player {
 private:
     float x, y;
+    float CurrentFrame = 0;
 public:
     float w, h, dx, dy ,speed = 0;
     int dir = 0;
@@ -18,11 +19,12 @@ public:
         image.loadFromFile(file);
         texture.loadFromImage(image);
         sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect (1188, 936, w, h));
+        sprite.setTextureRect(sf::IntRect (1480, 895, w, h));
         sprite.setOrigin(w/2, h/2);
     }
     void Update(float time);
     float Get_Player_X();
     float Get_Player_Y();
-    void  Key_Input();
+    void Key_Input(float time);
+    void Rotation(sf::Vector2f); // функция вращения объекта в сторону направления курсора.
 };

@@ -12,7 +12,7 @@ private:
     bool update();
     void render();
     bool handle_event(const sf::Event& event);
-    void get_input(Player* player, float time);
+    void get_input(Player* player, float time, sf::Vector2f pos);
     sf::RenderWindow _window;
     // Player _player;
 };

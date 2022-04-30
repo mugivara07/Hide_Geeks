@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 #
 #add_executable(Hide_Geeks ${SOURCE_FILES} ${HEADER_FILES})
 
-add_executable(Hide_Geeks project/src/main.cpp project/src/Game.cpp project/src/Player.cpp)
+add_executable(Hide_Geeks project/src/main.cpp project/src/Game.cpp project/src/Player.cpp )
 
 TARGET_LINK_LIBRARIES(Hide_Geeks sfml-system sfml-window sfml-graphics)
 TARGET_INCLUDE_DIRECTORIES(Hide_Geeks PUBLIC project/include)
