@@ -73,6 +73,7 @@ void Game::run() {
 		}
 
 		_window.draw(player_1.sprite);
+		_window.draw(player_1.sprite_2);
 		_window.display();
 
 

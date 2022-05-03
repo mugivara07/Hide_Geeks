@@ -66,6 +66,7 @@ void Player::Update(float time) { // // Todo(Artem) Implement diagonal movement
 
 	speed = 0;
 	sprite.setPosition(x, y);
+	sprite_2.setPosition(x - w / 4, y - w / 8);
 }
 
 float Player::Get_Player_X() {
@@ -124,7 +125,6 @@ void Player::Key_Input(float time) {
 		CurrentFrame += 0.005 * time;
 		if (CurrentFrame > 8) CurrentFrame -= 8;
 		sprite.setTextureRect(sf::IntRect(32 * int(CurrentFrame) + 1480, 895, 32, 32));
-		sprite.move(-0.1 * time, 0);
 	}
 }
 
@@ -134,5 +134,126 @@ void Player::Rotation(sf::Vector2f pos) {
 	float dY = pos.y - Get_Player_Y(); //он же, координата y
 	float rotation = (atan2(dY, dX)) * 180 / 3.14159265;//получаем угол в радианах и переводим его в градусы
 	std::cout << rotation << "\n";//смотрим на градусы в консольке
-	sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+
+
+	//11111algorithm for rotation player's parts toward current direction with or without moving of player111111111111111111111111111111
+	//if (dir == 4) {
+	//	if (rotation <= -30 && rotation >= -150 && rotation == -150) {
+	//		sprite_2.setRotation(-150);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= -30 && rotation >= -150 && rotation == -30) {
+	//		sprite_2.setRotation(-30);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= -30 && rotation >= -150) {
+	//		sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//	}
+	//}
+	//if (dir == 5) {
+	//	if (rotation <= 60 && rotation >= -60 && rotation == 60) {
+	//		sprite_2.setRotation(60);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= 60 && rotation >= -60 && rotation == -60) {
+	//		sprite_2.setRotation(-60);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= 60 && rotation >= -60) {
+	//		sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//	}
+	//}
+
+
+	//11111algorithm for rotation player's parts and player toward current direction with or without moving of player111111111111111111111111111111
+	//if (dir == 4) {
+	//	if (rotation <= -30 && rotation >= -150 && rotation == -150) {
+	//		sprite_2.setRotation(-150);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(-150);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= -30 && rotation >= -150 && rotation == -30) {
+	//		sprite_2.setRotation(-30);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(-30);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= -30 && rotation >= -150) {
+	//		sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//	}
+	//}
+	//if (dir == 5) {
+	//	if (rotation <= 60 && rotation >= -60 && rotation == 60) {
+	//		sprite_2.setRotation(60);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(60);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= 60 && rotation >= -60 && rotation == -60) {
+	//		sprite_2.setRotation(-60);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(-60);//поворачиваем спрайт на эти градусы
+	//	}
+	//	else if (rotation <= 60 && rotation >= -60) {
+	//		sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//		sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+	//	}
+	//}
+
+
+	//11111algorithm for rotation player's parts and player toward current direction with moving of player
+	// and for rotation player's parts toward current direction withoout moving of player111111111111111111111111111111
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+		if (rotation <= -30 && rotation >= -150 && rotation == -150) {
+			sprite_2.setRotation(-150);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(-150);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= -30 && rotation >= -150 && rotation == -30) {
+			sprite_2.setRotation(-30);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(-30);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= -30 && rotation >= -150) {
+			sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+		}
+	}
+	else if (dir == 4) {
+		if (rotation <= -30 && rotation >= -150 && rotation == -150) {
+			sprite_2.setRotation(-150);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(-90);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= -30 && rotation >= -150 && rotation == -30) {
+			sprite_2.setRotation(-30);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(-90);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= -30 && rotation >= -150) {
+			sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(-90);//поворачиваем спрайт на эти градусы
+		}
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+		if (rotation <= 60 && rotation >= -60 && rotation == 60) {
+			sprite_2.setRotation(60);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= 60 && rotation >= -60 && rotation == -60) {
+			sprite_2.setRotation(-60);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= 60 && rotation >= -60) {
+			sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(rotation);//поворачиваем спрайт на эти градусы
+		}
+	}
+	else if (dir == 5) {
+		if (rotation <= 60 && rotation >= -60 && rotation == 60) {
+			sprite_2.setRotation(60);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(0);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= 60 && rotation >= -60 && rotation == -60) {
+			sprite_2.setRotation(-60);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(0);//поворачиваем спрайт на эти градусы
+		}
+		else if (rotation <= 60 && rotation >= -60) {
+			sprite_2.setRotation(rotation);//поворачиваем спрайт на эти градусы
+			sprite.setRotation(0);//поворачиваем спрайт на эти градусы
+		}
+	}
+
+
+
+	//algorithm for rotation player's parts and player around simultaneously
+	//sprite_2.setRotation(rotation);
+	//sprite.setRotation(rotation);
 }
